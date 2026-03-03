@@ -286,7 +286,7 @@ select:hover~.cursor-outline,
 .hero {
     height: 100vh;
     min-height: 600px;
-    background: url('../assets/barber_interior.png') center/cover no-repeat;
+    background: url('../assets/product1.png') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;
@@ -365,8 +365,9 @@ select:hover~.cursor-outline,
 
 .services-premium-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 40px;
+    align-items: stretch;
 }
 
 .premium-service-card {
@@ -1289,6 +1290,10 @@ select:hover~.cursor-outline,
 
     .hero-content h2 {
         font-size: 3.5rem;
+    }
+
+    .services-premium-grid {
+        grid-template-columns: 1fr;
     }
 
     .gallery-grid {
