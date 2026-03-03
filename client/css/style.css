@@ -325,6 +325,17 @@ select:hover ~ .cursor-outline,
 }
 
 /* =========================================
+   LOCATION SECTION
+========================================= */
+.location-section { 
+    background-color: var(--cream); 
+    text-align: center;
+}
+.location-section .section-title h2 { margin-bottom: 10px; }
+.location-section .section-subtitle { margin-bottom: 0; }
+.location-section iframe { display: block; }
+
+/* =========================================
    FOOTER
 ========================================= */
 .site-footer { background: var(--charcoal-light); color: var(--cream); padding: 80px 0 30px; }

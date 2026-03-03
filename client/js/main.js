@@ -1,3 +1,5 @@
+const API_BASE = 'https://avance-barber-shop-production.up.railway.app';
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // --- 0. Custom Luxury Cursor ---
@@ -32,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- 2. UI: Mobile Hamburger Menu ---
     const mobileToggle = document.getElementById('mobile-toggle');
     const mainNav = document.getElementById('main-nav');
-    
+
     mobileToggle.addEventListener('click', () => {
         mainNav.classList.toggle('active');
         const icon = mobileToggle.querySelector('i');
@@ -64,6 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const submitBtn = document.getElementById('submit-btn');
     const modal = document.getElementById('success-modal');
 
+    // Restrict date picker to today and future dates
+    const today = new Date().toISOString().split('T')[0];
+    dateInput.setAttribute('min', today);
+
     // Fetch Slots when Date changes
     dateInput.addEventListener('change', async (e) => {
         const date = e.target.value;
@@ -71,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
         slotSelect.disabled = true;
 
         try {
-            const res = await fetch(`/api/slots?date=${date}`);
+            const res = await fetch(`${API_BASE}/api/slots?date=${date}`);
             const bookedSlots = await res.json();
-            
+
             // Assuming standard shop hours 10am to 5pm
             const allSlots = ['10:00', '11:00', '12:00', '13:00', '14:00', '15:00', '16:00', '17:00'];
             slotSelect.innerHTML = '<option value="">Scegli l\'orario</option>';
-            
+
             allSlots.forEach(slot => {
                 const isBooked = bookedSlots.includes(slot);
                 const option = document.createElement('option');
@@ -96,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Submit Booking
     bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         // UX: Change button state
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Attendere...';
@@ -106,13 +112,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = Object.fromEntries(formData.entries());
 
         try {
-            const res = await fetch('/api/book', {
+            const res = await fetch(`${API_BASE}/api/book`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(data)
             });
             const result = await res.json();
-            
+
             if (result.ok) {
                 // Show Success Modal instead of plain text
                 modal.classList.add('active');
@@ -132,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // --- 5. UI: Modal Close Function ---
-    window.closeModal = function() {
+    window.closeModal = function () {
         modal.classList.remove('active');
     };
 });

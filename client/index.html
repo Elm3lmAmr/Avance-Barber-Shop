@@ -4,6 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Avance | Salone per Uomo</title>
+    <meta name="description" content="Avance Salone per Uomo — L'eccellenza della barbieria italiana a Colombare-Sirmione. Taglio, rasatura tradizionale e trattamenti VIP. Prenota ora.">
+    <meta property="og:title" content="Avance | Salone per Uomo">
+    <meta property="og:description" content="Stile classico, eleganza moderna. La vera esperienza del barbiere italiano.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://avance-barber-shop.vercel.app/">
+    <meta property="og:image" content="assets/logo.png">
+    <link rel="icon" type="image/png" href="assets/logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
@@ -154,6 +161,18 @@
                                 </div>
                             </div>
 
+                            <div class="floating-input select-wrapper">
+                                <i class="fas fa-cut input-icon"></i>
+                                <select name="service" id="booking-service" required>
+                                    <option value="" disabled selected hidden>Scegli il servizio</option>
+                                    <option value="Trattamento Viso - 8€">Trattamento Viso — 8€</option>
+                                    <option value="Rasatura Tradizionale - 15€">Rasatura Tradizionale — 15€</option>
+                                    <option value="Rasatura Moderno - 20€">Rasatura Moderno — 20€</option>
+                                    <option value="Taglio capelli e barba - 25€">Taglio capelli e barba — 25€</option>
+                                    <option value="Trattamento VIP - 30€">Trattamento VIP Completo — 30€</option>
+                                </select>
+                            </div>
+
                             <div class="input-group-row">
                                 <div class="floating-input">
                                     <i class="far fa-calendar-alt input-icon"></i>
@@ -176,7 +195,18 @@
             </div>
         </section>
         
-        <section id="location" class="location-section reveal-up">
+        <section id="location" class="location-section">
+            <div class="container">
+                <div class="section-title reveal-up" style="padding-top: 80px; padding-bottom: 40px;">
+                    <span class="gold-accent">
+                        <i class="fas fa-map-marker-alt" style="font-size:0.6rem; margin-right:8px;"></i>
+                        DOVE TROVARCI
+                        <i class="fas fa-map-marker-alt" style="font-size:0.6rem; margin-left:8px;"></i>
+                    </span>
+                    <h2>La Nostra Sede</h2>
+                    <p class="section-subtitle">Vieni a trovarci nel cuore di Colombare-Sirmione. Un ambiente accogliente e sofisticato ti aspetta.</p>
+                </div>
+            </div>
             <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.390033107055!2d9.18780211555734!3d45.46271297910088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c148301d0a5d%3A0x608e9cc3ce6a620e!2sPiazza%20del%20Duomo%2C%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" 
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">

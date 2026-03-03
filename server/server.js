@@ -14,7 +14,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: [
+        'https://avance-barber-shop.vercel.app',
+        'http://localhost:5000',
+        'http://localhost:3000'
+    ],
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.static(path.resolve(__dirname, '../client')));
 
