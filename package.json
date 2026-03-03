@@ -1,0 +1,14 @@
+{
+  "name": "avance-barber-shop",
+  "version": "1.0.0",
+  "description": "Avance Salon & Spa Booking System",
+  "type": "module",
+  "scripts": {
+    "dev": "cd server && npm run dev",
+    "start": "cd server && npm install && node server.js",
+    "build": "cd server && npm install"
+  },
+  "keywords": ["barber", "booking", "salon"],
+  "author": "",
+  "license": "ISC"
+}
