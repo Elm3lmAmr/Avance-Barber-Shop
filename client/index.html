@@ -19,6 +19,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
 <body>
@@ -214,15 +215,15 @@
                         <div class="gallery-overlay"><span>Rasatura Tradizionale</span></div>
                     </div>
                     <div class="gallery-item scale-in" style="transition-delay:0.2s">
-                        <img src="assets/product2.png" alt="Prodotti premium" loading="lazy">
-                        <div class="gallery-overlay"><span>Prodotti Premium</span></div>
+                        <img src="assets/barber_beard.png" alt="Rasatura barba" loading="lazy">
+                        <div class="gallery-overlay"><span>Rasatura Barba</span></div>
                     </div>
                     <div class="gallery-item gallery-tall scale-in" style="transition-delay:0.25s">
                         <img src="assets/model4.jpg" alt="Stile moderno" loading="lazy">
                         <div class="gallery-overlay"><span>Stile Moderno</span></div>
                     </div>
                     <div class="gallery-item scale-in" style="transition-delay:0.3s">
-                        <img src="assets/product1.png" alt="Il salone" loading="lazy">
+                        <img src="assets/barber_interior.png" alt="Il salone" loading="lazy">
                         <div class="gallery-overlay"><span>Il Salone</span></div>
                     </div>
                 </div>
@@ -244,10 +245,28 @@
                     <div class="booking-form-side">
                         <div class="form-header">
                             <h3>Dettagli Prenotazione</h3>
-                            <p>Compila i campi sottostanti per confermare la tua poltrona.</p>
+                            <p>Accedi con Google e prenota la tua poltrona.</p>
                         </div>
 
-                        <form id="booking-form" class="luxury-form">
+                        <!-- Google Auth Section -->
+                        <div id="google-auth-section" class="google-auth-section">
+                            <div id="google-signin-btn"></div>
+                            <p class="google-hint"><i class="fas fa-lock"></i> Accedi per garantire una prenotazione
+                                sicura</p>
+                        </div>
+
+                        <!-- User Info (shown after login) -->
+                        <div id="user-info" class="user-info" style="display:none">
+                            <img id="user-avatar" class="user-avatar" alt="">
+                            <div class="user-details">
+                                <span id="user-name" class="user-name"></span>
+                                <span id="user-email" class="user-email"></span>
+                            </div>
+                            <button id="signout-btn" class="signout-btn" title="Esci"><i
+                                    class="fas fa-sign-out-alt"></i></button>
+                        </div>
+
+                        <form id="booking-form" class="luxury-form" style="display:none">
                             <div class="input-group-row">
                                 <div class="floating-input">
                                     <i class="fas fa-user input-icon"></i>
@@ -255,7 +274,9 @@
                                 </div>
                                 <div class="floating-input">
                                     <i class="fas fa-phone input-icon"></i>
-                                    <input type="tel" name="contact" id="contact" placeholder="Telefono (+39)" required>
+                                    <input type="tel" name="contact" id="contact" placeholder="+39 3XX XXX XXXX"
+                                        pattern="^\+?39?\s?[03]\d{1,2}[\s-]?\d{3}[\s-]?\d{3,4}$"
+                                        title="Inserisci un numero italiano valido" required>
                                 </div>
                             </div>
 
@@ -302,12 +323,12 @@
                         <i class="fas fa-map-marker-alt" style="font-size:0.6rem; margin-left:8px;"></i>
                     </span>
                     <h2>La Nostra Sede</h2>
-                    <p class="section-subtitle">Vieni a trovarci nel cuore di Colombare-Sirmione. Un ambiente
-                        accogliente e sofisticato ti aspetta.</p>
+                    <p class="section-subtitle">Vieni a trovarci a Colombare-Sirmione. Un ambiente accogliente e
+                        sofisticato ti aspetta.</p>
                 </div>
             </div>
             <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.390033107055!2d9.18780211555734!3d45.46271297910088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c148301d0a5d%3A0x608e9cc3ce6a620e!2sPiazza%20del%20Duomo%2C%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2785.5!2d10.6016!3d45.4644!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781d14e2ccc58b7%3A0x1234!2sVia%20Colombare%2C%2068%2C%2025019%20Sirmione%20BS%2C%20Italy!5e0!3m2!1sit!2sit!4v1680000000000"
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
         </section>
@@ -331,8 +352,8 @@
             </div>
             <div class="footer-contact">
                 <h3>Sede</h3>
-                <p>Via della Spiga, 12</p>
-                <p>20121 Milano (MI), Italia</p>
+                <p>Via Colombare, 68</p>
+                <p>25019 Sirmione (BS), Italia</p>
             </div>
         </div>
         <div class="footer-bottom">

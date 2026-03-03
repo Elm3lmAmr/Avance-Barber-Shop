@@ -286,7 +286,7 @@ select:hover~.cursor-outline,
 .hero {
     height: 100vh;
     min-height: 600px;
-    background: url('../assets/product1.png') center/cover no-repeat;
+    background: url('../assets/barber_interior.png') center/cover no-repeat;
     position: relative;
     display: flex;
     align-items: center;
@@ -870,6 +870,75 @@ select:hover~.cursor-outline,
 .modal-box p {
     color: #666;
     margin-bottom: 30px;
+}
+
+/* =========================================
+   GOOGLE AUTH
+========================================= */
+.google-auth-section {
+    text-align: center;
+    padding: 30px 0;
+}
+
+.google-hint {
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 15px;
+}
+
+.google-hint i {
+    margin-right: 6px;
+    color: var(--gold);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--cream);
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.user-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    object-fit: cover;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    display: block;
+    font-weight: 700;
+    color: var(--charcoal);
+    font-size: 0.95rem;
+}
+
+.user-email {
+    display: block;
+    color: #888;
+    font-size: 0.8rem;
+}
+
+.signout-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #888;
+    transition: all 0.3s;
+}
+
+.signout-btn:hover {
+    border-color: #ce2b37;
+    color: #ce2b37;
 }
 
 /* =========================================

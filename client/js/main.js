@@ -1,4 +1,9 @@
 const API_BASE = 'https://avance-barber-shop-production.up.railway.app';
+const GOOGLE_CLIENT_ID = '152616246298-ri5h7nuciskm90933ptih312f595n7uv.apps.googleusercontent.com';
+
+// Google user session
+let googleUser = null;
+let googleCredential = null;
 
 document.addEventListener('DOMContentLoaded', () => {
 
@@ -71,7 +76,6 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!target) return;
             e.preventDefault();
 
-            // Close mobile nav if open
             mainNav.classList.remove('active');
             const icon = mobileToggle.querySelector('i');
             icon.classList.replace('fa-times', 'fa-bars');
@@ -124,10 +128,100 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // --- 8. Booking System ---
+    // --- 8. Google Sign-In ---
+    const googleAuthSection = document.getElementById('google-auth-section');
+    const userInfoSection = document.getElementById('user-info');
+    const bookingForm = document.getElementById('booking-form');
+
+    // Initialize Google Sign-In
+    function initGoogleSignIn() {
+        if (typeof google === 'undefined' || !google.accounts) {
+            // GIS not loaded yet, retry
+            setTimeout(initGoogleSignIn, 500);
+            return;
+        }
+
+        google.accounts.id.initialize({
+            client_id: GOOGLE_CLIENT_ID,
+            callback: handleGoogleSignIn,
+            auto_select: false
+        });
+
+        google.accounts.id.renderButton(
+            document.getElementById('google-signin-btn'),
+            {
+                theme: 'outline',
+                size: 'large',
+                width: 320,
+                text: 'signin_with',
+                shape: 'rectangular',
+                logo_alignment: 'center'
+            }
+        );
+    }
+
+    initGoogleSignIn();
+
+    // Handle Google Sign-In callback
+    async function handleGoogleSignIn(response) {
+        googleCredential = response.credential;
+
+        try {
+            const res = await fetch(`${API_BASE}/api/auth/google`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ credential: googleCredential })
+            });
+            const data = await res.json();
+
+            if (data.ok) {
+                googleUser = data.user;
+                showBookingForm();
+            } else {
+                alert('Errore di autenticazione Google');
+            }
+        } catch (err) {
+            console.error('Google auth error:', err);
+            alert('Errore di connessione. Riprova.');
+        }
+    }
+
+    function showBookingForm() {
+        googleAuthSection.style.display = 'none';
+        userInfoSection.style.display = 'flex';
+        bookingForm.style.display = 'block';
+
+        document.getElementById('user-avatar').src = googleUser.picture || '';
+        document.getElementById('user-name').textContent = googleUser.name;
+        document.getElementById('user-email').textContent = googleUser.email;
+
+        // Pre-fill name from Google
+        const nameInput = document.getElementById('name');
+        if (!nameInput.value) {
+            nameInput.value = googleUser.name;
+        }
+    }
+
+    function hideBookingForm() {
+        googleAuthSection.style.display = 'block';
+        userInfoSection.style.display = 'none';
+        bookingForm.style.display = 'none';
+        googleUser = null;
+        googleCredential = null;
+
+        // Re-render Google button
+        initGoogleSignIn();
+    }
+
+    // Sign out
+    document.getElementById('signout-btn').addEventListener('click', () => {
+        google.accounts.id.disableAutoSelect();
+        hideBookingForm();
+    });
+
+    // --- 9. Booking System ---
     const dateInput = document.getElementById('booking-date');
     const slotSelect = document.getElementById('booking-slot');
-    const bookingForm = document.getElementById('booking-form');
     const submitBtn = document.getElementById('submit-btn');
     const modal = document.getElementById('success-modal');
     const modalDetails = document.getElementById('modal-details');
@@ -168,12 +262,18 @@ document.addEventListener('DOMContentLoaded', () => {
     bookingForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
+        if (!googleCredential) {
+            alert('Devi accedere con Google per prenotare');
+            return;
+        }
+
         const originalBtnText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Attendere...';
         submitBtn.disabled = true;
 
         const formData = new FormData(bookingForm);
         const data = Object.fromEntries(formData.entries());
+        data.googleCredential = googleCredential;
 
         try {
             const res = await fetch(`${API_BASE}/api/book`, {
@@ -184,7 +284,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await res.json();
 
             if (result.ok) {
-                // Populate modal with booking details
                 const dateFormatted = new Date(data.date + 'T00:00:00').toLocaleDateString('it-IT', {
                     weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'
                 });
@@ -222,7 +321,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- 9. Modal Close Function ---
+    // --- 10. Modal Close Function ---
     window.closeModal = function () {
         modal.classList.remove('active');
         modalDetails.innerHTML = '';

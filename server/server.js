@@ -4,6 +4,8 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
 
 import bookingsRouter from './routes/bookings.js';
 import authRouter from './routes/auth.js';
@@ -13,7 +15,23 @@ dotenv.config();
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const app = express();
 
-// Middleware
+// Security: Helmet for HTTP headers
+app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
+}));
+
+// Security: Global rate limiter
+const globalLimiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 200,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { ok: false, message: 'Troppe richieste. Riprova tra qualche minuto.' }
+});
+app.use(globalLimiter);
+
+// CORS
 app.use(cors({
     origin: [
         'https://avance-barber-shop.vercel.app',
@@ -22,7 +40,9 @@ app.use(cors({
     ],
     credentials: true
 }));
-app.use(express.json());
+
+// Body parser with size limit
+app.use(express.json({ limit: '10kb' }));
 app.use(express.static(path.resolve(__dirname, '../client')));
 
 // Database 
