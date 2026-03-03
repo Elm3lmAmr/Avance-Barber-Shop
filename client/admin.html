@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avance — Admin Dashboard</title>
+    <link rel="icon" type="image/png" href="assets/logo.png">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:wght@400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --charcoal: #1c1c1c;
+            --charcoal-light: #2a2a2a;
+            --cream: #f4f1ea;
+            --gold: #b8994c;
+            --gold-hover: #c9aa5d;
+            --white: #ffffff;
+            --danger: #ce2b37;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--charcoal);
+            color: var(--cream);
+            font-family: var(--font-body);
+            min-height: 100vh;
+        }
+
+        /* Login Page */
+        .login-page {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--charcoal) 0%, var(--charcoal-light) 100%);
+        }
+
+        .login-card {
+            background: var(--charcoal-light);
+            padding: 50px 40px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .login-card h1 {
+            font-family: var(--font-heading);
+            font-size: 2.2rem;
+            letter-spacing: 3px;
+            color: var(--white);
+            margin-bottom: 5px;
+        }
+
+        .login-card .subtitle {
+            color: var(--gold);
+            font-size: 0.75rem;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 40px;
+        }
+
+        .login-card input {
+            width: 100%;
+            padding: 16px 20px;
+            margin-bottom: 20px;
+            font-family: var(--font-body);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--white);
+            font-size: 1rem;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .login-card input:focus {
+            border-color: var(--gold);
+        }
+
+        .login-card input::placeholder {
+            color: #666;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 16px;
+            background: var(--gold);
+            color: var(--charcoal);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s;
+        }
+
+        .login-btn:hover {
+            background: var(--gold-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(184, 153, 76, 0.3);
+        }
+
+        .login-error {
+            color: var(--danger);
+            font-size: 0.9rem;
+            margin-top: 15px;
+            display: none;
+        }
+
+        /* Dashboard */
+        .dashboard {
+            display: none;
+        }
+
+        .dash-header {
+            background: var(--charcoal-light);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .dash-brand h1 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: var(--white);
+        }
+
+        .dash-brand span {
+            color: var(--gold);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
+        }
+
+        .dash-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .back-link {
+            color: var(--gold);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: var(--gold-hover);
+        }
+
+        .logout-btn {
+            padding: 8px 20px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--cream);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .logout-btn:hover {
+            border-color: var(--danger);
+            color: var(--danger);
+        }
+
+        /* Stats */
+        .stats-bar {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px 40px;
+        }
+
+        .stat-card {
+            background: var(--charcoal-light);
+            padding: 25px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .stat-card .stat-label {
+            color: #888;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-card .stat-value {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--gold);
+            margin-top: 8px;
+        }
+
+        /* Filter */
+        .filter-bar {
+            padding: 0 40px 20px;
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .filter-bar label {
+            color: #888;
+            font-size: 0.85rem;
+        }
+
+        .filter-bar input[type="date"] {
+            padding: 10px 16px;
+            background: var(--charcoal-light);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            color: var(--white);
+            font-family: var(--font-body);
+            outline: none;
+        }
+
+        .filter-bar input[type="date"]:focus {
+            border-color: var(--gold);
+        }
+
+        .filter-clear {
+            padding: 10px 16px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--cream);
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .filter-clear:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+
+        /* Table */
+        .table-container {
+            padding: 0 40px 40px;
+            overflow-x: auto;
+        }
+
+        .bookings-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--charcoal-light);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .bookings-table th {
+            background: rgba(184, 153, 76, 0.1);
+            color: var(--gold);
+            padding: 16px 20px;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .bookings-table td {
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-size: 0.95rem;
+            color: var(--cream);
+        }
+
+        .bookings-table tr:hover td {
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .bookings-table .empty-row td {
+            text-align: center;
+            color: #666;
+            padding: 40px;
+        }
+
+        .cancel-btn {
+            padding: 6px 16px;
+            background: transparent;
+            border: 1px solid var(--danger);
+            color: var(--danger);
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.3s;
+        }
+
+        .cancel-btn:hover {
+            background: var(--danger);
+            color: var(--white);
+        }
+
+        .cancel-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 40px;
+            color: var(--gold);
+        }
+
+        @media (max-width: 768px) {
+            .dash-header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .stats-bar {
+                padding: 20px;
+            }
+
+            .filter-bar {
+                padding: 0 20px 15px;
+                flex-wrap: wrap;
+            }
+
+            .table-container {
+                padding: 0 20px 20px;
+            }
+
+            .login-card {
+                margin: 20px;
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Login -->
+    <div class="login-page" id="login-page">
+        <div class="login-card">
+            <h1>AVANCE</h1>
+            <span class="subtitle">PANNELLO ADMIN</span>
+            <form id="login-form">
+                <input type="text" id="login-email" placeholder="Username" required autocomplete="username">
+                <input type="password" id="login-pass" placeholder="Password" required autocomplete="current-password">
+                <button type="submit" class="login-btn">Accedi <i class="fas fa-arrow-right"></i></button>
+            </form>
+            <p class="login-error" id="login-error">Credenziali non valide. Riprova.</p>
+        </div>
+    </div>
+
+    <!-- Dashboard -->
+    <div class="dashboard" id="dashboard">
+        <div class="dash-header">
+            <div class="dash-brand">
+                <h1>AVANCE</h1>
+                <span>ADMIN DASHBOARD</span>
+            </div>
+            <div class="dash-actions">
+                <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> Torna al sito</a>
+                <button class="logout-btn" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Esci</button>
+            </div>
+        </div>
+
+        <div class="stats-bar" id="stats-bar">
+            <div class="stat-card">
+                <div class="stat-label">Prenotazioni Totali</div>
+                <div class="stat-value" id="stat-total">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Oggi</div>
+                <div class="stat-value" id="stat-today">—</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Prossime</div>
+                <div class="stat-value" id="stat-upcoming">—</div>
+            </div>
+        </div>
+
+        <div class="filter-bar">
+            <label>Filtra per data:</label>
+            <input type="date" id="filter-date">
+            <button class="filter-clear" id="filter-clear">Mostra tutte</button>
+        </div>
+
+        <div class="table-container">
+            <table class="bookings-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Telefono</th>
+                        <th>Servizio</th>
+                        <th>Data</th>
+                        <th>Orario</th>
+                        <th>Azioni</th>
+                    </tr>
+                </thead>
+                <tbody id="bookings-body">
+                    <tr>
+                        <td colspan="7" class="loading-spinner"><i class="fas fa-circle-notch fa-spin"></i>
+                            Caricamento...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://avance-barber-shop-production.up.railway.app';
+        let token = localStorage.getItem('avance_admin_token');
+        let allBookings = [];
+
+        // Check existing auth
+        if (token) {
+            showDashboard();
+        }
+
+        // Login
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-pass').value;
+            const errorEl = document.getElementById('login-error');
+            errorEl.style.display = 'none';
+
+            try {
+                const res = await fetch(`${API_BASE}/api/auth/login`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email, password })
+                });
+                const data = await res.json();
+
+                if (data.ok) {
+                    token = data.token;
+                    localStorage.setItem('avance_admin_token', token);
+                    showDashboard();
+                } else {
+                    errorEl.style.display = 'block';
+                }
+            } catch (err) {
+                errorEl.textContent = 'Errore di connessione al server.';
+                errorEl.style.display = 'block';
+            }
+        });
+
+        // Logout
+        document.getElementById('logout-btn').addEventListener('click', () => {
+            localStorage.removeItem('avance_admin_token');
+            token = null;
+            document.getElementById('dashboard').style.display = 'none';
+            document.getElementById('login-page').style.display = 'flex';
+        });
+
+        // Show Dashboard
+        async function showDashboard() {
+            document.getElementById('login-page').style.display = 'none';
+            document.getElementById('dashboard').style.display = 'block';
+            await loadBookings();
+        }
+
+        // Load Bookings
+        async function loadBookings() {
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/bookings`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const data = await res.json();
+
+                if (!data.ok) {
+                    // Token expired or invalid
+                    localStorage.removeItem('avance_admin_token');
+                    document.getElementById('dashboard').style.display = 'none';
+                    document.getElementById('login-page').style.display = 'flex';
+                    return;
+                }
+
+                allBookings = data.bookings || [];
+                updateStats();
+                renderBookings(allBookings);
+            } catch (err) {
+                document.getElementById('bookings-body').innerHTML =
+                    '<tr><td colspan="7" style="text-align:center;color:#ce2b37;padding:40px;">Errore di connessione</td></tr>';
+            }
+        }
+
+        // Update Stats
+        function updateStats() {
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('stat-total').textContent = allBookings.length;
+            document.getElementById('stat-today').textContent = allBookings.filter(b => b.date === today).length;
+            document.getElementById('stat-upcoming').textContent = allBookings.filter(b => b.date >= today).length;
+        }
+
+        // Render Bookings Table
+        function renderBookings(bookings) {
+            const tbody = document.getElementById('bookings-body');
+
+            if (bookings.length === 0) {
+                tbody.innerHTML = '<tr class="empty-row"><td colspan="7">Nessuna prenotazione trovata</td></tr>';
+                return;
+            }
+
+            tbody.innerHTML = bookings.map(b => `
+                <tr>
+                    <td><code style="color:var(--gold)">${b.id}</code></td>
+                    <td>${b.name}</td>
+                    <td>${b.contact}</td>
+                    <td>${b.service || '—'}</td>
+                    <td>${b.date}</td>
+                    <td>${b.slot}</td>
+                    <td><button class="cancel-btn" onclick="cancelBooking('${b.id}', this)"><i class="fas fa-trash-alt"></i> Cancella</button></td>
+                </tr>
+            `).join('');
+        }
+
+        // Cancel Booking
+        window.cancelBooking = async function (bookingId, btn) {
+            if (!confirm('Sei sicuro di voler cancellare questa prenotazione?')) return;
+
+            btn.disabled = true;
+            btn.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i>';
+
+            try {
+                const res = await fetch(`${API_BASE}/api/admin/cancel`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ bookingId })
+                });
+                const data = await res.json();
+
+                if (data.ok) {
+                    await loadBookings();
+                } else {
+                    alert('Errore: ' + data.message);
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fas fa-trash-alt"></i> Cancella';
+                }
+            } catch (err) {
+                alert('Errore di connessione');
+                btn.disabled = false;
+                btn.innerHTML = '<i class="fas fa-trash-alt"></i> Cancella';
+            }
+        };
+
+        // Date Filter
+        document.getElementById('filter-date').addEventListener('change', (e) => {
+            const date = e.target.value;
+            if (date) {
+                renderBookings(allBookings.filter(b => b.date === date));
+            } else {
+                renderBookings(allBookings);
+            }
+        });
+
+        document.getElementById('filter-clear').addEventListener('click', () => {
+            document.getElementById('filter-date').value = '';
+            renderBookings(allBookings);
+        });
+    </script>
+</body>
+
+</html>
