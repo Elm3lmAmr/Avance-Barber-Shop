@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avance | Salone per Uomo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-outline" id="cursor-outline"></div>
+
+    <div class="top-accent-bar"></div>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <div class="brand">
+                <h1>AVANCE</h1>
+                <span>SALONE PER UOMO</span>
+            </div>
+            
+            <nav class="main-nav" id="main-nav">
+                <ul class="nav-links">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Servizi</a></li>
+                    <li><a href="#testimonials">Dicono di noi</a></li>
+                    <li><a href="#location">Dove Siamo</a></li>
+                </ul>
+                <a href="#booking" class="btn-gold">Prenota Ora</a>
+            </nav>
+
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content reveal-up">
+                <span class="subtitle">L'ARTE DELLA BARBIERIA</span>
+                <h2>Stile Classico,<br>Eleganza Moderna.</h2>
+                <p>La vera esperienza del barbiere italiano. Cura dei dettagli, maestria artigiana e un momento di puro relax nel cuore di Colombare-Sirmione, BS.</p>
+                <a href="#booking" class="btn-gold-solid">Riserva la tua poltrona</a>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-title reveal-up">
+                    <span class="gold-accent">
+                        <i class="fas fa-star" style="font-size:0.5rem; margin-right:8px;"></i>
+                        L'ARTE DEL DETTAGLIO
+                        <i class="fas fa-star" style="font-size:0.5rem; margin-left:8px;"></i>
+                    </span>
+                    <h2>Eccellenza Artigiana</h2>
+                    <p class="section-subtitle">Scopri i nostri trattamenti esclusivi, pensati per l'uomo contemporaneo che non rinuncia allo stile e al benessere.</p>
+                </div>
+                
+                <div class="services-premium-grid">
+                    <div class="premium-service-card reveal-up">
+                        <div class="service-image" style="background-image: url('assets/model2.jpg');"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3>Trattamento Viso</h3>
+                                <span class="service-price">8€</span>
+                            </div>
+                            <p>Consulenza d'immagine, taglio eseguito a forbice su misura, lavaggio con prodotti botanici premium e styling strutturato.</p>
+                            <ul class="service-details">
+                                <li><i class="far fa-clock"></i> 20 Minuti</li>
+                                <li><i class="fas fa-leaf"></i> Prodotti Organici</li>
+                            </ul>
+                            <a href="#booking" class="service-book-btn">Prenota Ora <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="premium-service-card reveal-up" style="transition-delay: 0.1s;">
+                        <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3>Rasatura Tradizionale / Moderno</h3>
+                                <span class="service-price">15 / 20 €</span>
+                            </div>
+                            <p>Il vero rituale italiano: panno caldo, insaponatura a pennello in tasso, rasatura a mano libera e massaggio dopobarba idratante.</p>
+                            <ul class="service-details">
+                                <li><i class="far fa-clock"></i> 30 Minuti</li>
+                                <li><i class="fas fa-temperature-high"></i> Panno Caldo</li>
+                            </ul>
+                            <a href="#booking" class="service-book-btn">Prenota Ora <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div class="premium-service-card reveal-up" style="transition-delay: 0.2s;">
+                        <div class="service-image" style="background-image: url('assets/model1.jpg');"></div>
+                        <div class="service-content">
+                            <div class="service-header">
+                                <h3>Trattamento VIP</h3>
+                                <span class="service-price">25/30€</span>
+                            </div>
+                            <p>Rasatura di capelli e barba, panno caldo e filo, lavaggio dei capelli  con shampoo  e asciugatura. 30€ 
+                                <hr>
+                                Taglio  capelli e barba 25€
+                            </p>
+                            <ul class="service-details">
+                                <li><i class="far fa-clock"></i> 45 Minuti</li>
+                                <li><i class="fas fa-spa"></i> Relax Totale</li>
+                            </ul>
+                            <a href="#booking" class="service-book-btn">Prenota Ora <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials">
+            <div class="container reveal-up">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p class="testimonial-text">"Un ambiente sofisticato dove il tempo sembra fermarsi. Il miglior taglio che abbia mai ricevuto in Italia. Vera maestria artigiana."</p>
+                <h4 class="testimonial-author">— Alessandro R., Milano</h4>
+            </div>
+        </section>
+
+        <section id="booking" class="booking-section-premium">
+            <div class="container">
+                <div class="booking-luxury-wrapper reveal-up">
+                    
+                    <div class="booking-image-side">
+                        <div class="booking-image-overlay">
+                            <span class="gold-accent">IL TUO MOMENTO</span>
+                            <h2>Riserva il tuo appuntamento.</h2>
+                            <p>Un'esperienza su misura ti aspetta. Rilassati, al resto pensiamo noi.</p>
+                        </div>
+                    </div>
+
+                    <div class="booking-form-side">
+                        <div class="form-header">
+                            <h3>Dettagli Prenotazione</h3>
+                            <p>Compila i campi sottostanti per confermare la tua poltrona.</p>
+                        </div>
+
+                        <form id="booking-form" class="luxury-form">
+                            <div class="input-group-row">
+                                <div class="floating-input">
+                                    <i class="fas fa-user input-icon"></i>
+                                    <input type="text" name="name" id="name" placeholder="Nome e Cognome" required>
+                                </div>
+                                <div class="floating-input">
+                                    <i class="fas fa-phone input-icon"></i>
+                                    <input type="tel" name="contact" id="contact" placeholder="Telefono (+39)" required>
+                                </div>
+                            </div>
+
+                            <div class="input-group-row">
+                                <div class="floating-input">
+                                    <i class="far fa-calendar-alt input-icon"></i>
+                                    <input type="date" name="date" id="booking-date" required>
+                                </div>
+                                <div class="floating-input select-wrapper">
+                                    <i class="far fa-clock input-icon"></i>
+                                    <select name="slot" id="booking-slot" required disabled>
+                                        <option value="" disabled selected hidden>Seleziona prima la data</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn-gold-solid submit-luxury" id="submit-btn">
+                                <span>Conferma Ora <i class="fas fa-arrow-right"></i></span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="location" class="location-section reveal-up">
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2798.390033107055!2d9.18780211555734!3d45.46271297910088!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4786c148301d0a5d%3A0x608e9cc3ce6a620e!2sPiazza%20del%20Duomo%2C%20Milano%20MI%2C%20Italy!5e0!3m2!1sen!2sus!4v1680000000000!5m2!1sen!2sus" 
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <h2>AVANCE</h2>
+                <p>L'eccellenza della barbieria italiana.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+            <div class="footer-hours">
+                <h3>Orari di Apertura</h3>
+                <p>Lun - Ven: 09:00 - 20:00</p>
+                <p>Sabato: 09:00 - 18:00</p>
+                <p>Domenica: Chiuso</p>
+            </div>
+            <div class="footer-contact">
+                <h3>Sede</h3>
+                <p>Via della Spiga, 12</p>
+                <p>20121 Milano (MI), Italia</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Avance Salone per Uomo. Tutti i diritti riservati.</p>
+        </div>
+    </footer>
+
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-box">
+            <i class="fas fa-check-circle modal-icon"></i>
+            <h3>Prenotazione Confermata!</h3>
+            <p>Grazie per aver scelto Avance. Ti aspettiamo nel nostro salone.</p>
+            <button class="btn-gold-solid" onclick="closeModal()">Chiudi</button>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
