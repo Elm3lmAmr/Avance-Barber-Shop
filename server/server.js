@@ -34,6 +34,8 @@ app.use(globalLimiter);
 // CORS
 app.use(cors({
     origin: [
+        'https://avancebarbiere.com',
+        'https://www.avancebarbiere.com',
         'https://avance-barber-shop.vercel.app',
         'http://localhost:5000',
         'http://localhost:3000'
