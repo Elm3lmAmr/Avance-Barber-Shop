@@ -561,7 +561,7 @@ select:hover~.cursor-outline,
 }
 
 .booking-image-side {
-    background: url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover no-repeat;
+    background: url('assets/barber_interior.png') center/cover no-repeat;
     position: relative;
 }
 
@@ -1005,28 +1005,40 @@ select:hover~.cursor-outline,
    VIP PRICING
 ========================================= */
 .vip-pricing {
-    margin-bottom: 25px;
+    margin: 15px 0 20px;
+    border-top: 1px solid rgba(184, 153, 76, 0.2);
+    border-bottom: 1px solid rgba(184, 153, 76, 0.2);
+    padding: 10px 0;
 }
 
 .vip-price-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px dotted #ddd;
-    font-size: 0.95rem;
-    color: #666;
+    padding: 8px 0;
+    font-size: 0.9rem;
+    color: #555;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.06);
 }
 
 .vip-price-item:last-child {
     border-bottom: none;
 }
 
+.vip-price-item.highlight {
+    color: var(--charcoal);
+    font-weight: 700;
+    background: rgba(184, 153, 76, 0.08);
+    margin: 0 -5px;
+    padding: 8px 5px;
+    border-radius: 4px;
+}
+
 .vip-amount {
-    font-family: var(--font-heading);
     color: var(--gold);
-    font-weight: 600;
-    font-size: 1.1rem;
+    font-weight: 700;
+    font-size: 1rem;
+    white-space: nowrap;
 }
 
 /* =========================================
@@ -1083,24 +1095,15 @@ select:hover~.cursor-outline,
 }
 
 /* =========================================
-   GALLERY SECTION
+   GALLERY
 ========================================= */
 .gallery-section {
-    padding: 120px 0;
-    background-color: var(--charcoal);
-    text-align: center;
-    position: relative;
+    background: var(--charcoal);
+    padding: 0 0 80px;
 }
 
-.gallery-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 1px;
-    height: 60px;
-    background: var(--gold);
-    transform: translateX(-50%);
+.gallery-section .section-title {
+    padding: 80px 0 50px;
 }
 
 .gallery-section .section-title h2 {
@@ -1111,40 +1114,81 @@ select:hover~.cursor-outline,
     color: #a0a0a0;
 }
 
+/* Full-width hero image (Il Salone) */
+.gallery-hero {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.gallery-hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform 0.6s ease;
+}
+
+.gallery-hero:hover img {
+    transform: scale(1.03);
+}
+
+.gallery-hero .gallery-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 0%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    padding: 30px 40px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.gallery-hero:hover .gallery-overlay {
+    opacity: 1;
+}
+
+/* 3-column grid below hero */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 280px;
-    gap: 15px;
+    gap: 16px;
+    padding: 0 0;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 4px;
+    height: 280px;
+    cursor: pointer;
 }
 
 .gallery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center top;
+    display: block;
     transition: transform 0.6s ease;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .gallery-overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(28, 28, 28, 0.85) 0%, rgba(28, 28, 28, 0) 60%);
+    background: linear-gradient(to top, rgba(28, 28, 28, 0.8) 0%, transparent 50%);
     display: flex;
     align-items: flex-end;
-    justify-content: center;
-    padding: 25px;
+    padding: 20px;
     opacity: 0;
-    transition: opacity 0.4s ease;
+    transition: opacity 0.35s ease;
 }
 
 .gallery-item:hover .gallery-overlay {
@@ -1152,15 +1196,15 @@ select:hover~.cursor-outline,
 }
 
 .gallery-overlay span {
-    color: var(--gold);
+    color: var(--cream);
     font-family: var(--font-heading);
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     letter-spacing: 1px;
-    font-weight: 600;
 }
 
-.gallery-tall {
-    grid-row: span 2;
+.gallery-hero .gallery-overlay span {
+    font-size: 1.6rem;
+    color: var(--gold);
 }
 
 /* =========================================
@@ -1283,26 +1327,52 @@ select:hover~.cursor-outline,
 /* =========================================
    MOBILE RESPONSIVE
 ========================================= */
-@media (max-width: 992px) {
-    .booking-wrapper {
+/* Disable custom cursor on touch devices (performance) */
+@media (hover: none) and (pointer: coarse) {
+
+    .cursor-dot,
+    .cursor-outline {
+        display: none !important;
+    }
+}
+
+/* =========================================
+   MOBILE RESPONSIVE
+========================================= */
+@media (max-width: 1100px) {
+    .services-premium-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 992px) {
+    .booking-luxury-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .booking-image-side {
+        min-height: 260px;
     }
 
     .hero-content h2 {
-        font-size: 3.5rem;
+        font-size: 3.2rem;
     }
 
-    .services-premium-grid {
-        grid-template-columns: 1fr;
+    .gallery-hero {
+        height: 320px;
     }
 
     .gallery-grid {
         grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 250px;
     }
 
-    .gallery-tall {
-        grid-row: span 2;
+    .gallery-item {
+        height: 220px;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
     }
 }
 
@@ -1339,6 +1409,49 @@ select:hover~.cursor-outline,
         display: block;
     }
 
+    .hero-content h2 {
+        font-size: 2.4rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .services {
+        padding: 80px 0;
+    }
+
+    .services-premium-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .testimonial-text {
+        font-size: 1.5rem !important;
+    }
+
+    .gallery-hero {
+        height: 230px;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .gallery-item {
+        height: 180px;
+    }
+
+    .booking-form-side {
+        padding: 40px 24px;
+    }
+
+    .input-group-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1349,31 +1462,44 @@ select:hover~.cursor-outline,
         justify-content: center;
     }
 
-    .input-row {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-content h2 {
-        font-size: 2.8rem;
-    }
-
-    .gallery-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 220px;
-    }
-
-    .gallery-tall {
-        grid-row: span 1;
-    }
-
-    .testimonial-text {
-        font-size: 1.5rem !important;
-    }
-
     .back-to-top {
         bottom: 20px;
         right: 20px;
         width: 44px;
         height: 44px;
+    }
+
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .booking-image-overlay h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 2rem;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery-item {
+        height: 200px;
+    }
+
+    .gallery-hero {
+        height: 200px;
+    }
+
+    .container {
+        padding: 0 16px;
+    }
+
+    .service-content {
+        padding: 28px 20px;
     }
 }

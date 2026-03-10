@@ -11,9 +11,16 @@
     <meta property="og:description"
         content="Stile classico, eleganza moderna. La vera esperienza del barbiere italiano.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://avance-barber-shop.vercel.app/">
+    <meta property="og:url" content="https://avancebarbiere.com/">
     <meta property="og:image" content="assets/logo.png">
     <link rel="icon" type="image/png" href="assets/logo.png">
+    <!-- Performance: preconnect to external origins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://accounts.google.com">
+    <!-- Preload hero image -->
+    <link rel="preload" as="image" href="assets/product1.png">
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
         rel="stylesheet">
@@ -86,17 +93,35 @@
                 </div>
 
                 <div class="services-premium-grid">
+                    <!-- Card 1: Trattamento Viso -->
                     <div class="premium-service-card reveal-left">
                         <div class="service-image" style="background-image: url('assets/model2.jpg');"></div>
                         <div class="service-content">
                             <div class="service-header">
                                 <h3>Trattamento Viso</h3>
-                                <span class="service-price">8€</span>
                             </div>
-                            <p>Consulenza d'immagine, taglio eseguito a forbice su misura, lavaggio con prodotti
-                                botanici premium e styling strutturato.</p>
+                            <p>Prenditi cura del tuo viso con i nostri trattamenti estetici professionali, realizzati
+                                con prodotti di alta qualità.</p>
+                            <div class="vip-pricing">
+                                <div class="vip-price-item">
+                                    <span>Maschera viso</span>
+                                    <span class="vip-amount">6€</span>
+                                </div>
+                                <div class="vip-price-item">
+                                    <span>Epilazione filo</span>
+                                    <span class="vip-amount">8€</span>
+                                </div>
+                                <div class="vip-price-item">
+                                    <span>Rasatura barba</span>
+                                    <span class="vip-amount">8€</span>
+                                </div>
+                                <div class="vip-price-item highlight">
+                                    <span>Pacchetto completo</span>
+                                    <span class="vip-amount">15€</span>
+                                </div>
+                            </div>
                             <ul class="service-details">
-                                <li><i class="far fa-clock"></i> 20 Minuti</li>
+                                <li><i class="far fa-clock"></i> 20–40 Minuti</li>
                                 <li><i class="fas fa-leaf"></i> Prodotti Organici</li>
                             </ul>
                             <a href="#booking" class="service-book-btn nav-link">Prenota Ora <i
@@ -104,17 +129,25 @@
                         </div>
                     </div>
 
+                    <!-- Card 2: Rasatura -->
                     <div class="premium-service-card reveal-up" style="transition-delay: 0.1s;">
-                        <div class="service-image"
-                            style="background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80');">
-                        </div>
+                        <div class="service-image" style="background-image: url('assets/barber_beard.png');"></div>
                         <div class="service-content">
                             <div class="service-header">
-                                <h3>Rasatura Tradizionale / Moderno</h3>
-                                <span class="service-price">15 / 20 €</span>
+                                <h3>Rasatura</h3>
                             </div>
                             <p>Il vero rituale italiano: panno caldo, insaponatura a pennello in tasso, rasatura a mano
                                 libera e massaggio dopobarba idratante.</p>
+                            <div class="vip-pricing">
+                                <div class="vip-price-item">
+                                    <span>Rasatura Tradizionale</span>
+                                    <span class="vip-amount">15€</span>
+                                </div>
+                                <div class="vip-price-item">
+                                    <span>Rasatura Moderno</span>
+                                    <span class="vip-amount">20€</span>
+                                </div>
+                            </div>
                             <ul class="service-details">
                                 <li><i class="far fa-clock"></i> 30 Minuti</li>
                                 <li><i class="fas fa-temperature-high"></i> Panno Caldo</li>
@@ -124,20 +157,22 @@
                         </div>
                     </div>
 
+                    <!-- Card 3: Trattamento VIP -->
                     <div class="premium-service-card reveal-right" style="transition-delay: 0.2s;">
                         <div class="service-image" style="background-image: url('assets/model1.jpg');"></div>
                         <div class="service-content">
                             <div class="service-header">
                                 <h3>Trattamento VIP</h3>
-                                <span class="service-price">25/30€</span>
                             </div>
+                            <p>L'esperienza completa per il gentiluomo esigente: taglio, barba e trattamento esclusivo
+                                in un'unica sessione di relax totale.</p>
                             <div class="vip-pricing">
                                 <div class="vip-price-item">
                                     <span>Taglio capelli e barba</span>
                                     <span class="vip-amount">25€</span>
                                 </div>
-                                <div class="vip-price-item">
-                                    <span>Completo con lavaggio e asciugatura</span>
+                                <div class="vip-price-item highlight">
+                                    <span>Completo con lavaggio</span>
                                     <span class="vip-amount">30€</span>
                                 </div>
                             </div>
@@ -200,44 +235,37 @@
                     <p class="section-subtitle">Ogni taglio racconta una storia. Scopri l'artigianato e la precisione
                         che ci contraddistinguono.</p>
                 </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item gallery-tall scale-in">
-                        <img src="assets/model1.jpg" alt="Taglio classico" loading="lazy">
-                        <div class="gallery-overlay"><span>Taglio Classico</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.1s">
-                        <img src="assets/model2.jpg" alt="Trattamento viso" loading="lazy">
-                        <div class="gallery-overlay"><span>Trattamento Viso</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.15s">
-                        <img src="assets/barber_fade.png" alt="Fade moderno" loading="lazy">
-                        <div class="gallery-overlay"><span>Fade Moderno</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.2s">
-                        <img src="assets/barber_beard.png" alt="Rasatura barba" loading="lazy">
-                        <div class="gallery-overlay"><span>Rasatura Barba</span></div>
-                    </div>
-                    <div class="gallery-item gallery-tall scale-in" style="transition-delay:0.25s">
-                        <img src="assets/model4.jpg" alt="Stile moderno" loading="lazy">
-                        <div class="gallery-overlay"><span>Stile Moderno</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.3s">
-                        <img src="assets/barber_interior.png" alt="Esperienza premium" loading="lazy">
-                        <div class="gallery-overlay"><span>Esperienza premium</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.35s">
-                        <img src="assets/barber_classic.png" alt="Taglio classico gentleman" loading="lazy">
-                        <div class="gallery-overlay"><span>Stile Gentleman</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.4s">
-                        <img src="assets/product1.png" alt="Il salone" loading="lazy">
-                        <div class="gallery-overlay"><span>Il salone</span></div>
-                    </div>
-                    <div class="gallery-item scale-in" style="transition-delay:0.45s">
-                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
-                            alt="Rasatura tradizionale" loading="lazy">
-                        <div class="gallery-overlay"><span>Rasatura Tradizionale</span></div>
-                    </div>
+            </div>
+            <!-- Hero image: full width alone -->
+            <div class="gallery-hero scale-in">
+                <img src="assets/barber_interior.png" alt="Il Salone Avance" loading="lazy" decoding="async">
+                <div class="gallery-overlay"><span>Il Salone Avance</span></div>
+            </div>
+            <!-- 3-column grid -->
+            <div class="gallery-grid">
+                <div class="gallery-item scale-in" style="transition-delay:0.05s">
+                    <img src="assets/model1.jpg" alt="Taglio classico" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><span>Taglio Classico</span></div>
+                </div>
+                <div class="gallery-item scale-in" style="transition-delay:0.1s">
+                    <img src="assets/model2.jpg" alt="Trattamento viso" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><span>Trattamento Viso</span></div>
+                </div>
+                <div class="gallery-item scale-in" style="transition-delay:0.15s">
+                    <img src="assets/barber_fade.png" alt="Fade moderno" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><span>Fade Moderno</span></div>
+                </div>
+                <div class="gallery-item scale-in" style="transition-delay:0.2s">
+                    <img src="assets/barber_beard.png" alt="Rasatura barba" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><span>Rasatura Barba</span></div>
+                </div>
+                <div class="gallery-item scale-in" style="transition-delay:0.25s">
+                    <img src="assets/barber_classic.png" alt="Stile gentleman" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><span>Stile Gentleman</span></div>
+                </div>
+                <div class="gallery-item scale-in" style="transition-delay:0.3s">
+                    <img src="assets/product1.png" alt="Esperienza premium" loading="lazy" decoding="async">
+                    <div class="gallery-overlay"><span>Esperienza Premium</span></div>
                 </div>
             </div>
         </section>
@@ -296,11 +324,21 @@
                                 <i class="fas fa-cut input-icon"></i>
                                 <select name="service" id="booking-service" required>
                                     <option value="" disabled selected hidden>Scegli il servizio</option>
-                                    <option value="Trattamento Viso - 8€">Trattamento Viso — 8€</option>
-                                    <option value="Rasatura Tradizionale - 15€">Rasatura Tradizionale — 15€</option>
-                                    <option value="Rasatura Moderno - 20€">Rasatura Moderno — 20€</option>
-                                    <option value="Taglio capelli e barba - 25€">Taglio capelli e barba — 25€</option>
-                                    <option value="Trattamento VIP - 30€">Trattamento VIP Completo — 30€</option>
+                                    <optgroup label="Trattamento Viso">
+                                        <option value="Maschera Viso - 6€">Maschera Viso — 6€</option>
+                                        <option value="Epilazione Filo - 8€">Epilazione Filo — 8€</option>
+                                        <option value="Rasatura Barba - 8€">Rasatura Barba — 8€</option>
+                                        <option value="Pacchetto Viso Completo - 15€">Pacchetto Completo — 15€</option>
+                                    </optgroup>
+                                    <optgroup label="Rasatura">
+                                        <option value="Rasatura Tradizionale - 15€">Rasatura Tradizionale — 15€</option>
+                                        <option value="Rasatura Moderno - 20€">Rasatura Moderno — 20€</option>
+                                    </optgroup>
+                                    <optgroup label="Trattamento VIP">
+                                        <option value="VIP - Taglio e Barba - 25€">Taglio capelli e barba — 25€</option>
+                                        <option value="VIP - Completo con Lavaggio - 30€">Completo con lavaggio — 30€
+                                        </option>
+                                    </optgroup>
                                 </select>
                             </div>
 
@@ -339,13 +377,12 @@
                         sofisticato ti aspetta.</p>
                 </div>
             </div>
-            <iframe src="https://www.google.com/maps?q=45.4644,10.6016&z=16&output=embed" width="100%" height="450"
+            <iframe src="https://www.google.com/maps?q=45.46347,10.60047&z=17&output=embed" width="100%" height="450"
                 style="border:0;" allowfullscreen="" loading="lazy">
             </iframe>
             <div style="text-align:center; padding:15px 0; background:var(--charcoal-light);">
-                <a href="https://www.google.com/maps/dir/?api=1&destination=Via+Colombare+68,+25019+Sirmione+BS,+Italy"
-                    target="_blank" rel="noopener"
-                    style="color:var(--gold); text-decoration:none; font-size:0.9rem; letter-spacing:1px;">
+                <a href="https://maps.app.goo.gl/8F1f1ofDCCg9d7EDA" target="_blank" rel="noopener"
+                    style="color:var(--gold); text-decoration:none; font-size:0.9rem; letter-spacing:1px; display:inline-flex; align-items:center; gap:8px; padding:8px 20px;">
                     <i class="fas fa-directions"></i> OTTIENI INDICAZIONI STRADALI
                 </a>
             </div>
