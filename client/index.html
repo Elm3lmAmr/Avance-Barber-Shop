@@ -20,12 +20,17 @@
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://accounts.google.com">
     <!-- Preload hero image -->
-    <link rel="preload" as="image" href="assets/product1.png">
+    <link rel="preload" as="image" href="assets/product1.jpg" fetchpriority="high">
+    <link rel="preload" as="style" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+        rel="stylesheet" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    </noscript>
     <script src="https://accounts.google.com/gsi/client" async defer></script>
 </head>
 
@@ -95,7 +100,7 @@
                 <div class="services-premium-grid">
                     <!-- Card 1: Trattamento Viso -->
                     <div class="premium-service-card reveal-left">
-                        <div class="service-image" style="background-image: url('assets/barber_beard.png');"></div>
+                        <div class="service-image" style="background-image: url('assets/barber_beard.jpg');"></div>
                         <div class="service-content">
                             <div class="service-header">
                                 <h3>Trattamento Viso</h3>
@@ -120,7 +125,6 @@
                             </div>
                             <ul class="service-details">
                                 <li><i class="far fa-clock"></i> 20–40 Minuti</li>
-                                <li><i class="fas fa-leaf"></i> Prodotti Organici</li>
                             </ul>
                             <a href="#booking" class="service-book-btn nav-link">Prenota Ora <i
                                     class="fas fa-arrow-right"></i></a>
@@ -150,7 +154,6 @@
                             </div>
                             <ul class="service-details">
                                 <li><i class="far fa-clock"></i> 30 Minuti</li>
-                                <li><i class="fas fa-temperature-high"></i> Panno Caldo</li>
                             </ul>
                             <a href="#booking" class="service-book-btn nav-link">Prenota Ora <i
                                     class="fas fa-arrow-right"></i></a>
@@ -176,7 +179,6 @@
                             </div>
                             <ul class="service-details">
                                 <li><i class="far fa-clock"></i> 45 Minuti</li>
-                                <li><i class="fas fa-spa"></i> Relax Totale</li>
                             </ul>
                             <a href="#booking" class="service-book-btn nav-link">Prenota Ora <i
                                     class="fas fa-arrow-right"></i></a>
@@ -225,7 +227,7 @@
             <div class="container">
                 <div class="booking-luxury-wrapper reveal-left">
 
-                    <div class="booking-image-side" style="background-image: url('assets/product1.png');">
+                    <div class="booking-image-side" style="background-image: url('assets/product1.jpg');">
                         <div class="booking-image-overlay">
                             <span class="gold-accent">IL TUO MOMENTO</span>
                             <h2>Riserva il tuo appuntamento.</h2>
@@ -332,7 +334,7 @@
             <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1857.4470387698286!2d10.60488758002426!3d45.46841665373216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4781eb4a1421dabb%3A0x1f6a560ff29d68e!2sAvance%20Salon%26Spa!5e1!3m2!1sen!2sus!4v1773158099570!5m2!1sen!2sus"
                 width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
+                referrerpolicy="no-referrer-when-downgrade" title="Mappa Avance Salone">
             </iframe>
             <div style="text-align:center; padding:15px 0; background:var(--charcoal-light);">
                 <a href="https://maps.app.goo.gl/8F1f1ofDCCg9d7EDA" target="_blank" rel="noopener"
@@ -385,7 +387,7 @@
         <i class="fas fa-chevron-up"></i>
     </button>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" defer></script>
 </body>
 
 </html>

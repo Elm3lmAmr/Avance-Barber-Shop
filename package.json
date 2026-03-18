@@ -8,7 +8,14 @@
     "start": "cd server && npm install && node server.js",
     "build": "cd server && npm install"
   },
-  "keywords": ["barber", "booking", "salon"],
+  "keywords": [
+    "barber",
+    "booking",
+    "salon"
+  ],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "sharp": "^0.34.5"
+  }
 }

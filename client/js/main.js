@@ -248,12 +248,33 @@ document.addEventListener('DOMContentLoaded', () => {
             ];
             slotSelect.innerHTML = '<option value="">Scegli l\'orario</option>';
 
+            // Check if selected date is today to filter past slots
+            const now = new Date();
+            const selectedDate = new Date(date + 'T00:00:00');
+            const isToday = now.toDateString() === selectedDate.toDateString();
+
             allSlots.forEach(slot => {
                 const isBooked = bookedSlots.includes(slot);
+
+                // If today, check if the slot time has already passed
+                let isPast = false;
+                if (isToday) {
+                    const [slotH, slotM] = slot.split(':').map(Number);
+                    const slotDate = new Date();
+                    slotDate.setHours(slotH, slotM, 0, 0);
+                    isPast = slotDate <= now;
+                }
+
                 const option = document.createElement('option');
                 option.value = slot;
-                option.disabled = isBooked;
-                option.textContent = isBooked ? `${slot} (Prenotato)` : slot;
+                option.disabled = isBooked || isPast;
+                if (isPast) {
+                    option.textContent = `${slot} (Passato)`;
+                } else if (isBooked) {
+                    option.textContent = `${slot} (Prenotato)`;
+                } else {
+                    option.textContent = slot;
+                }
                 slotSelect.appendChild(option);
             });
             slotSelect.disabled = false;
