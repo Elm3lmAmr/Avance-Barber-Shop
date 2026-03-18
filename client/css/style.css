@@ -1477,6 +1477,17 @@ select:hover~.cursor-outline,
     .booking-image-overlay h2 {
         font-size: 1.8rem;
     }
+
+    /* Fix horizontal overflow: replace translateX with translateY on mobile */
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(40px);
+    }
+
+    .reveal-left.active,
+    .reveal-right.active {
+        transform: translateY(0);
+    }
 }
 
 @media (max-width: 480px) {
